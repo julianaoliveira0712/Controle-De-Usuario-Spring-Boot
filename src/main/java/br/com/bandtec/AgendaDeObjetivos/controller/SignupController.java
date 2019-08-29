@@ -20,7 +20,11 @@ public class SignupController {
         }
 
         Usuario.usuariosCadastrados.add(novoUsuario);
-        return ResponseEntity.ok("Usuário Cadastrado " + Usuario.usuariosCadastrados.size());
+        Token token = new Token();
+        token.setValor(Math.random() * 1000000 + novoUsuario.getLogin());
+        token.setUsuario(novoUsuario);
+        Token.tokens.add(token);
+        return ResponseEntity.ok("Usuário Cadastrado " + token.getValor());
     }
 
 }

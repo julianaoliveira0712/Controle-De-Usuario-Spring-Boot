@@ -34,6 +34,7 @@ public class LogoutController implements Crud<ResponseEntity<String>>{
 
     @Override
     public ResponseEntity<String> delete(Object body) {
+        String token = (String) body;
         for (int i = 0; i < Token.tokens.size() ; i++) {
             Token token1 = Token.tokens.get(i);
             if(token1.getValor().equals(token)){
@@ -42,7 +43,5 @@ public class LogoutController implements Crud<ResponseEntity<String>>{
         }
 
         return ResponseEntity.ok("Usuário deslogado");
-
-
     }
 }
